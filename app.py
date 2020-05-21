@@ -20,7 +20,7 @@ def get_form_data():
 
 	print(urls)
 	
-	return render_template('result.html',url_to_extract=url, items=urls)
+	return render_template('result.html',url_to_extract=url, len=len(urls), items=urls)
 
 if __name__ == '__main__':
 	app.run(debug=True)
