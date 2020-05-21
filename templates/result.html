@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+</head>
+<body>
+	<h2>All links in {{url_to_extract}}: </h2>
+{% for i in items %}
+	<h3><a href="{{i}}">{{i}}</a></h3>
+{%endfor%}
+</body>
+</html>
