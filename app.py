@@ -16,8 +16,13 @@ def form():
 @app.route('/form-handler', methods=['POST'])
 def get_form_data():
 	url = request.form['text']
-	urls = extract(url)
-
+	if 'http' not in url:
+		url = 'http://'+url
+		urls = extract(url)
+		print(url)
+	elif 'http' in url:
+		urls = extract(url)
+		print(url)
 	print(urls)
 	
 	return render_template('result.html',url_to_extract=url, len=len(urls), items=urls)
