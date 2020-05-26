@@ -16,16 +16,21 @@ def form():
 @app.route('/form-handler', methods=['POST'])
 def get_form_data():
 	url = request.form['text']
-	if 'http' not in url:
-		url = 'http://'+url
-		urls = extract(url)
-		print(url)
-	elif 'http' in url:
-		urls = extract(url)
-		print(url)
-	print(urls)
-	
-	return render_template('result.html',url_to_extract=url, len=len(urls), items=urls)
+	if 'porn' in url:
+		return "NO PORN WEBSITES ARE ALLOWED!"
+	else:
+		if 'http' not in url:
+			url = 'http://'+url
+			urls = extract(url)
+			len_show_msg = str(len(urls))+' URLs found!'
+			print(url)
+		elif 'http' in url:
+			urls = extract(url)
+			len_show_msg = str(len(urls))+' URLs found!'
+			print(url)
+		print(urls)
+		
+		return render_template('result.html',url_to_extract=url, msg=len_show_msg, items=urls)
 
 if __name__ == '__main__':
 	app.run(debug=True)
