@@ -15,9 +15,12 @@ def form():
 
 @app.route('/form-handler', methods=['POST'])
 def get_form_data():
+	whitelist = open('whitelist.txt','r')
 	url = request.form['text']
 	if 'porn' in url:
 		return "NO PORN WEBSITES ARE ALLOWED!"
+	elif url not in whitelist.readlines():
+		return 'URL is not in the whitelist'
 	else:
 		if 'http' not in url:
 			url = 'http://'+url
