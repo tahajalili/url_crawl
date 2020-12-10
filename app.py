@@ -33,4 +33,4 @@ def get_form_data():
 		return render_template('result.html',url_to_extract=url, msg=len_show_msg, items=urls)
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
